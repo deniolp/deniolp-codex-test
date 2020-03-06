@@ -8,6 +8,7 @@ const DEFAULT_PORT = 5000;
 const DATA_DIR = `./data/`;
 
 const app = express();
+app.use(express.json());
 app.use(function (req, res, next) {
   res.header(`Access-Control-Allow-Origin`, `*`);
   res.header(`Access-Control-Allow-Headers`, `Origin, X-Requested-With, Content-Type, Accept`);
@@ -45,19 +46,23 @@ const readContent = async () => {
 const run = async () => {
   const files = await fs.readdir(DATA_DIR);
   const commands = await getCommands(files);
-  try {
-    await fs.writeFile(`./data/output.txt`, commands.join(`\n`));
-    console.log(chalk.green(`Operation success. File created.`));
-    return commands;
-  } catch (err) {
-    console.error(chalk.red(`Can't write data to file...`));
-    return process.exit();
-  }
+  return commands;
 };
 
 app.get(`/`, async (req, res) => {
   const commands = await run();
   res.send(commands);
 });
-app.listen(DEFAULT_PORT,
-    () => console.log(`Сервер запущен на порту: ${DEFAULT_PORT}`));
+app.post(`/`, async (req, res) => {
+  const receivedData = req.body.data;
+  try {
+    await fs.writeFile(`./data/output.txt`, receivedData);
+    console.log(chalk.green(`Operation success. File created.`));
+    return res.sendStatus(200);
+  } catch (err) {
+    console.error(chalk.red(`Can't write data to file...`));
+    return process.exit();
+  }
+});
+
+app.listen(DEFAULT_PORT, () => console.log(`Сервер запущен на порту: ${DEFAULT_PORT}`));

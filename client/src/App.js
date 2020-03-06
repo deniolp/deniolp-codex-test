@@ -14,6 +14,10 @@ let canvasCopy = [];
 
 const drawPart = (array) => array.reduce((acc, innerArray) => `${acc}${innerArray.join(``)}\n`, ``);
 
+const saveFile = async (paintForSave) => {
+  await fetch(`http://localhost:5000/`, {method: `POST`, body: JSON.stringify({data: paintForSave}), headers: {'Content-Type': 'application/json'}});
+}
+
 const drawPaint = (commands) => {
   commands.pop();
   for (let i = 0; i < commands.length; i++) {
@@ -57,6 +61,7 @@ drawPaint(commands);
   return (
     <div>
       <h1>Hi friends!</h1>
+      <button onClick={() => saveFile(paintForSave)}>Save the painting</button>
       <Canvas value={paint}></Canvas>
     </div>
   );

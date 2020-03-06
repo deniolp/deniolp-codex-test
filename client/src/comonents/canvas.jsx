@@ -8,7 +8,7 @@ const {value} = props;
     <textarea
       style={{
         width: `100%`,
-        height: `85vh`,
+        height: `80vh`,
       }}
       value={value}
       disabled="disabled"
