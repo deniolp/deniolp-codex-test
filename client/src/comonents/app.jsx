@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import Canvas from './comonents/canvas';
-import createCanvasArray from './utils/create-canvas-array';
-import createLine from './utils/create-line';
-import createRect from './utils/create-rect';
-import fillBySign from './utils/fill-by-sign';
+import Canvas from './canvas';
+import createCanvasArray from '../utils/create-canvas-array';
+import createLine from '../utils/create-line';
+import createRect from '../utils/create-rect';
+import fillBySign from '../utils/fill-by-sign';
 
 let isCanvasExist = false;
 let paint = ``;
@@ -13,10 +13,6 @@ let canvasArray = [];
 let canvasCopy = [];
 
 const drawPart = (array) => array.reduce((acc, innerArray) => `${acc}${innerArray.join(``)}\n`, ``);
-
-const saveFile = async (paintForSave) => {
-  await fetch(`http://localhost:5000/`, {method: `POST`, body: JSON.stringify({data: paintForSave}), headers: {'Content-Type': 'application/json'}});
-}
 
 const drawPaint = (commands) => {
   commands.pop();
@@ -45,7 +41,6 @@ const drawPaint = (commands) => {
         const canvasA = (isCanvasExist) ? fillBySign(commands[i], canvasCopy) : `Canvas did not created`;
         paintForSave += (typeof canvasA === `string`) ? `Out of canvas\n` : drawPart(canvasA);
         paint = (typeof canvasA === `string`) ? `Out of canvas\n` : drawPart(canvasA);
-        console.log(paintForSave);
         break;
       default:
         paintForSave = `Canvas did not created`;
@@ -54,14 +49,27 @@ const drawPaint = (commands) => {
   }
 }
 
-function App(props) {
+const App = (props) => {
 const {data} = props;
+const [isSended, setIsSended] = useState(false);
+
 const commands = data.map((item) => item.trim().split(' '));
+
 drawPaint(commands);
+
+const saveFile = async (paintForSave) => {
+  await fetch(`http://localhost:5000/`, {method: `POST`, body: JSON.stringify({data: paintForSave}), headers: {'Content-Type': 'application/json'}})
+    .then((res) => {
+      if(res.ok === true) {
+        setIsSended(true);
+      }
+    });
+}
+
   return (
     <div>
       <h1>Hi friends!</h1>
-      <button onClick={() => saveFile(paintForSave)}>Save the painting</button>
+      <button onClick={() => saveFile(paintForSave)}>{!isSended ? `Save the painting` : `Data had been sended to server and saved as output.txt`}</button>
       <Canvas value={paint}></Canvas>
     </div>
   );
