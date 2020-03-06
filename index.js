@@ -4,10 +4,16 @@ const express = require(`express`);
 const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
 
-const DEFAULT_PORT = 3000;
+const DEFAULT_PORT = 5000;
 const DATA_DIR = `./data/`;
 
 const app = express();
+app.use(express.json());
+app.use(function (req, res, next) {
+  res.header(`Access-Control-Allow-Origin`, `*`);
+  res.header(`Access-Control-Allow-Headers`, `Origin, X-Requested-With, Content-Type, Accept`);
+  next();
+});
 
 const getCommands = async (files) => {
   try {
@@ -52,7 +58,7 @@ const run = async () => {
 
 app.get(`/`, async (req, res) => {
   const commands = await run();
-  res.send(`Hello, here are the commands: ${commands}`);
+  res.send(commands);
 });
 app.listen(DEFAULT_PORT,
     () => console.log(`Сервер запущен на порту: ${DEFAULT_PORT}`));
