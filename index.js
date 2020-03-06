@@ -8,7 +8,6 @@ const DEFAULT_PORT = 5000;
 const DATA_DIR = `./data/`;
 
 const app = express();
-app.use(express.json());
 app.use(function (req, res, next) {
   res.header(`Access-Control-Allow-Origin`, `*`);
   res.header(`Access-Control-Allow-Headers`, `Origin, X-Requested-With, Content-Type, Accept`);
@@ -47,7 +46,7 @@ const run = async () => {
   const files = await fs.readdir(DATA_DIR);
   const commands = await getCommands(files);
   try {
-    await fs.writeFile(`./data/output.txt`, commands);
+    await fs.writeFile(`./data/output.txt`, commands.join(`\n`));
     console.log(chalk.green(`Operation success. File created.`));
     return commands;
   } catch (err) {
