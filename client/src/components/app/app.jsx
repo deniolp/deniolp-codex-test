@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import Canvas from '../canvas/canvas';
-import {drawPaint, paint, paintForSave, isCanvasExist} from '../../utils/draw-paint';
+import {drawPaint} from '../../utils/draw-paint';
 
 const App = (props) => {
 const {data} = props;
@@ -9,7 +9,7 @@ const [isSended, setIsSended] = useState(false);
 
 const commands = data.map((item) => item.trim().split(' '));
 
-drawPaint(commands);
+const {paint, paintForSave, isCanvasExist} = drawPaint(commands);
 
 const saveFile = async (paintForSave) => {
   await fetch(`http://localhost:5000/`, {method: `POST`, body: JSON.stringify({data: paintForSave}), headers: {'Content-Type': 'application/json'}})
