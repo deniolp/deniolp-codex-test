@@ -53,6 +53,11 @@ const drawPaint = (commands) => {
         break;
     }
   }
+  return {
+    paint,
+    paintForSave,
+    isCanvasExist,
+  }
 }
 
-export {drawPaint, paint, paintForSave, isCanvasExist}
+export {drawPaint}
