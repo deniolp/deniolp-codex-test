@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-import Canvas from './canvas';
-import {drawPaint, paint, paintForSave, isCanvasExist} from '../utils/draw-paint';
+import Canvas from '../canvas/canvas';
+import {drawPaint, paint, paintForSave, isCanvasExist} from '../../utils/draw-paint';
 
 const App = (props) => {
 const {data} = props;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Canvas renders correctly 1`] = `
+<textarea
+  disabled="disabled"
+  style={
+    Object {
+      "color": "green",
+      "height": "75vh",
+      "width": "100%",
+    }
+  }
+  value="This is a value"
+/>
+`;
