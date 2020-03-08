@@ -4,7 +4,8 @@
   "description": "The test for Codex company",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint index.js",
+    "test": "npm run eslint",
     "start": "node ./src/index.js",
     "server": "nodemon ./src/index.js",
     "client": "npm run start --prefix client",
