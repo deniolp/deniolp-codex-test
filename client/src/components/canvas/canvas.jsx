@@ -7,8 +7,10 @@ function Canvas(props) {
     <textarea
       style={{
         width: `100%`,
-        height: `75vh`,
-        color: `green`,
+        height: `65vh`,
+        color: `#000d33`,
+        backgroundColor: `inherit`,
+        border: 0,
       }}
       value={value}
       disabled="disabled"

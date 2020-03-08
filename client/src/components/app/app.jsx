@@ -24,23 +24,37 @@ const App = (props) => {
   };
 
   return (
-    <div>
-      <h3>Привет!</h3>
-      <p>
+    <div
+      style={{
+        margin: `0 auto`,
+        width: `90%`,
+        fontFamily: `Roboto`,
+        backgroundColor: `inherit`,
+      }}
+    >
+      <h3 style={{margin: `5px`, paddingTop: `10px`}}>Привет!</h3>
+      <p style={{margin: `2px`}}>
         Эта программа рисует псевдографику, читая инструкции из файла
         /data/input.txt. Если вы сделали "npm i", а затем "npm run dev", вы уже
-        видите внизу это произведение искусства. Сами вы тоже можете рисовать с
-        помощью подобных инструкций, написав их в "input.txt". "npm run dev"
-        запускает 2 сервера (express на backend, а второй на клиенте). Нажатие
-        на кнопку сохранит ваш рисунок в /data/output.txt
+        видите внизу это произведение искусства. Сами вы тоже cможете рисовать
+        такую красоту с помощью подобных инструкций, написав их в "input.txt".
+        Команда "npm run dev" запускает 2 сервера (express на backend, а второй
+        на клиенте). Нажатие на кнопку сохранит ваш рисунок в /data/output.txt
       </p>
       <button
+        style={{
+          display: `block`,
+          marginLeft: `auto`,
+          marginTop: `5px`,
+          marginBottom: `5px`,
+          height: `2.5em`,
+          backgroundColor: `#81b3d2`,
+          border: 0,
+        }}
         onClick={() => saveFile(paintForSave)}
         disabled={isSended || !isCanvasExist}
       >
-        {!isSended
-          ? `Save the painting`
-          : `Data had been sended to server and saved as output.txt`}
+        {!isSended ? `Сохранить` : `Рисунок был сохранен в data/output.txt`}
       </button>
       <Canvas value={paint}></Canvas>
     </div>
