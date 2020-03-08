@@ -9,7 +9,8 @@ let paintForSave = ``;
 let canvasArray = [];
 let canvasCopy = [];
 
-const drawPart = (array) => array.reduce((acc, innerArray) => `${acc}${innerArray.join(``)}\n`, ``);
+const drawPart = (array) =>
+  array.reduce((acc, innerArray) => `${acc}${innerArray.join(``)}\n`, ``);
 
 const drawPaint = (commands) => {
   commands.pop();
@@ -23,27 +24,51 @@ const drawPaint = (commands) => {
         break;
       case `L`:
         canvasCopy = canvasArray.slice();
-        const canvasWithLine = isCanvasExist ? createLine(commands[i], canvasCopy) : `Canvas did not created`;
-        paintForSave += (typeof canvasWithLine === `string`) ? canvasArray : drawPart(canvasWithLine);
-        paint = (typeof canvasWithLine === `string`) ? canvasWithLine : drawPart(canvasWithLine);
+        const canvasWithLine = isCanvasExist
+          ? createLine(commands[i], canvasCopy)
+          : `Canvas did not created`;
+        paintForSave +=
+          typeof canvasWithLine === `string`
+            ? canvasArray
+            : drawPart(canvasWithLine);
+        paint =
+          typeof canvasWithLine === `string`
+            ? canvasWithLine
+            : drawPart(canvasWithLine);
         if (typeof canvasWithLine === `string`) {
           return;
         }
         break;
       case `R`:
         canvasCopy = canvasArray.slice();
-        const canvasWithRect = isCanvasExist ? createRect(commands[i], canvasCopy) : `Canvas did not created`;
-        paintForSave += (typeof canvasWithRect === `string`) ? canvasArray : drawPart(canvasWithRect);
-        paint = (typeof canvasWithRect === `string`) ? canvasArray : drawPart(canvasWithRect);
+        const canvasWithRect = isCanvasExist
+          ? createRect(commands[i], canvasCopy)
+          : `Canvas did not created`;
+        paintForSave +=
+          typeof canvasWithRect === `string`
+            ? canvasArray
+            : drawPart(canvasWithRect);
+        paint =
+          typeof canvasWithRect === `string`
+            ? canvasArray
+            : drawPart(canvasWithRect);
         if (typeof canvasWithRect === `string`) {
           return;
         }
         break;
       case `B`:
         canvasCopy = canvasArray.slice();
-        const canvasFilled = isCanvasExist ? fillBySign(commands[i], canvasCopy) : `Canvas did not created`;
-        paintForSave += (typeof canvasFilled === `string`) ? `Out of canvas\n` : drawPart(canvasFilled);
-        paint = (typeof canvasFilled === `string`) ? `Out of canvas\n` : drawPart(canvasFilled);
+        const canvasFilled = isCanvasExist
+          ? fillBySign(commands[i], canvasCopy)
+          : `Canvas did not created`;
+        paintForSave +=
+          typeof canvasFilled === `string`
+            ? `Out of canvas\n`
+            : drawPart(canvasFilled);
+        paint =
+          typeof canvasFilled === `string`
+            ? `Out of canvas\n`
+            : drawPart(canvasFilled);
         if (typeof canvasFilled === `string`) {
           return;
         }
@@ -57,7 +82,7 @@ const drawPaint = (commands) => {
     paint,
     paintForSave,
     isCanvasExist,
-  }
-}
+  };
+};
 
-export {drawPaint}
+export {drawPaint};

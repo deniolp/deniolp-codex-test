@@ -17,7 +17,7 @@ const request = async (url, method = `GET`, body = null, headers = {}) => {
 
 const getData = async () => {
   data = await request(`http://localhost:5000`);
-  ReactDOM.render(<App data={data}/>, document.getElementById('root'));
-}
+  ReactDOM.render(<App data={data} />, document.getElementById('root'));
+};
 
 getData();

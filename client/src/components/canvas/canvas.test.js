@@ -5,9 +5,7 @@ import Canvas from './canvas';
 
 describe(`Canvas`, () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(
-      <Canvas value={`This is a value`}/>
-    ).toJSON();
+    const tree = renderer.create(<Canvas value={`This is a value`} />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

@@ -8,18 +8,18 @@ export default function createLine(command, canvas) {
   if (y1 > y2) {
     [y1, y2] = [y2, y1];
   }
-  x1 = (x1 < 1) ? 1 : x1;
-  y1 = (y1 < 1) ? 1 : y1;
+  x1 = x1 < 1 ? 1 : x1;
+  y1 = y1 < 1 ? 1 : y1;
   if (x1 === x2) {
-    x2 = (x2 >= canvasCopy[0].length - 1) ? canvasCopy[0].length - 2 : x2;
+    x2 = x2 >= canvasCopy[0].length - 1 ? canvasCopy[0].length - 2 : x2;
     x1 = x2;
   }
   if (y1 === y2) {
-    y2 = (y2 >= canvasCopy.length - 1) ? canvasCopy.length - 2 : y2;
+    y2 = y2 >= canvasCopy.length - 1 ? canvasCopy.length - 2 : y2;
     y1 = y2;
   }
-  x2 = (x2 >= canvasCopy[0].length - 1) ? canvasCopy[0].length - 2 : x2;
-  y2 = (y2 >= canvasCopy.length - 1) ? canvasCopy.length - 2 : y2;
+  x2 = x2 >= canvasCopy[0].length - 1 ? canvasCopy[0].length - 2 : x2;
+  y2 = y2 >= canvasCopy.length - 1 ? canvasCopy.length - 2 : y2;
 
   if (x1 === x2) {
     for (let i = y1; i <= y2; i++) {
