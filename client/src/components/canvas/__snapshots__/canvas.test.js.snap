@@ -5,8 +5,10 @@ exports[`Canvas renders correctly 1`] = `
   disabled="disabled"
   style={
     Object {
-      "color": "green",
-      "height": "75vh",
+      "backgroundColor": "inherit",
+      "border": 0,
+      "color": "#000d33",
+      "height": "65vh",
       "width": "100%",
     }
   }

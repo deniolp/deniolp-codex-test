@@ -1,25 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App renders correctly 1`] = `
-<div>
-  <h3>
+<div
+  style={
+    Object {
+      "backgroundColor": "inherit",
+      "fontFamily": "Roboto",
+      "margin": "0 auto",
+      "width": "90%",
+    }
+  }
+>
+  <h3
+    style={
+      Object {
+        "margin": "5px",
+        "paddingTop": "10px",
+      }
+    }
+  >
     Привет!
   </h3>
-  <p>
-    Эта программа рисует псевдографику, читая инструкции из файла /data/input.txt. Если вы сделали "npm i", а затем "npm run dev", вы уже видите внизу это произведение искусства. Сами вы тоже можете рисовать с помощью подобных инструкций, написав их в "input.txt". "npm run dev" запускает 2 сервера (express на backend, а второй на клиенте). Нажатие на кнопку сохранит ваш рисунок в /data/output.txt
+  <p
+    style={
+      Object {
+        "margin": "2px",
+      }
+    }
+  >
+    Эта программа рисует псевдографику, читая инструкции из файла /data/input.txt. Если вы сделали "npm i", а затем "npm run dev", вы уже видите внизу это произведение искусства. Сами вы тоже cможете рисовать такую красоту с помощью подобных инструкций, написав их в "input.txt". Команда "npm run dev" запускает 2 сервера (express на backend, а второй на клиенте). Нажатие на кнопку сохранит ваш рисунок в /data/output.txt
   </p>
   <button
     disabled={true}
     onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#81b3d2",
+        "border": 0,
+        "display": "block",
+        "height": "2.5em",
+        "marginBottom": "5px",
+        "marginLeft": "auto",
+        "marginTop": "5px",
+      }
+    }
   >
-    Save the painting
+    Сохранить
   </button>
   <textarea
     disabled="disabled"
     style={
       Object {
-        "color": "green",
-        "height": "75vh",
+        "backgroundColor": "inherit",
+        "border": 0,
+        "color": "#000d33",
+        "height": "65vh",
         "width": "100%",
       }
     }
