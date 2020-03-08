@@ -35,11 +35,12 @@ const App = (props) => {
       <h3 style={{margin: `5px`, paddingTop: `10px`}}>Привет!</h3>
       <p style={{margin: `2px`}}>
         Эта программа рисует псевдографику, читая инструкции из файла
-        /data/input.txt. Если вы сделали "npm i", а затем "npm run dev", вы уже
-        видите внизу это произведение искусства. Сами вы тоже cможете рисовать
-        такую красоту с помощью подобных инструкций, написав их в "input.txt".
-        Команда "npm run dev" запускает 2 сервера (express на backend, а второй
-        на клиенте). Нажатие на кнопку сохранит ваш рисунок в /data/output.txt
+        /data/input.txt. Если вы сделали "npm i" в корне и в папке "client", а
+        затем "npm run dev" в корне, вы уже видите внизу это произведение
+        искусства. Сами вы тоже cможете рисовать такую красоту с помощью
+        подобных инструкций, написав их в "input.txt". Команда "npm run dev"
+        запустила 2 сервера (один express на backend, а второй на клиенте).
+        Нажатие на кнопку сохранит ваш рисунок в /data/output.txt
       </p>
       <button
         style={{
@@ -48,8 +49,9 @@ const App = (props) => {
           marginTop: `5px`,
           marginBottom: `5px`,
           height: `2.5em`,
-          backgroundColor: `#81b3d2`,
+          backgroundColor: `rgb(221, 79, 155)`,
           border: 0,
+          borderRadius: `3px`,
         }}
         onClick={() => saveFile(paintForSave)}
         disabled={isSended || !isCanvasExist}
